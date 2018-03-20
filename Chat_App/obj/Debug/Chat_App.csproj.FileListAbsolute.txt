@@ -1,0 +1,9 @@
+C:\Users\Undermove\YandexDisk-shabalina.shabalinavaleriya\VS- Projects\Chat_App\Chat_App\bin\Debug\Chat_App.exe.config
+C:\Users\Undermove\YandexDisk-shabalina.shabalinavaleriya\VS- Projects\Chat_App\Chat_App\bin\Debug\Chat_App.exe
+C:\Users\Undermove\YandexDisk-shabalina.shabalinavaleriya\VS- Projects\Chat_App\Chat_App\bin\Debug\Chat_App.pdb
+C:\Users\Undermove\YandexDisk-shabalina.shabalinavaleriya\VS- Projects\Chat_App\Chat_App\obj\Debug\Chat_App.csprojResolveAssemblyReference.cache
+C:\Users\Undermove\YandexDisk-shabalina.shabalinavaleriya\VS- Projects\Chat_App\Chat_App\obj\Debug\Chat_App.ChatMainForm.resources
+C:\Users\Undermove\YandexDisk-shabalina.shabalinavaleriya\VS- Projects\Chat_App\Chat_App\obj\Debug\Chat_App.Properties.Resources.resources
+C:\Users\Undermove\YandexDisk-shabalina.shabalinavaleriya\VS- Projects\Chat_App\Chat_App\obj\Debug\Chat_App.csproj.GenerateResource.Cache
+C:\Users\Undermove\YandexDisk-shabalina.shabalinavaleriya\VS- Projects\Chat_App\Chat_App\obj\Debug\Chat_App.exe
+C:\Users\Undermove\YandexDisk-shabalina.shabalinavaleriya\VS- Projects\Chat_App\Chat_App\obj\Debug\Chat_App.pdb
