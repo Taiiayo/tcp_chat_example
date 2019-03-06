@@ -40,8 +40,8 @@
             this.textFriendsIp = new System.Windows.Forms.TextBox();
             this.textMessage = new System.Windows.Forms.TextBox();
             this.listMessage = new System.Windows.Forms.ListBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.startSession = new System.Windows.Forms.Button();
+            this.sendMessage = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -153,27 +153,27 @@
             this.listMessage.Size = new System.Drawing.Size(597, 134);
             this.listMessage.TabIndex = 3;
             // 
-            // button1
+            // startSession
             // 
-            this.button1.BackColor = System.Drawing.Color.LavenderBlush;
-            this.button1.Location = new System.Drawing.Point(540, 61);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Start";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.startSession.BackColor = System.Drawing.Color.LavenderBlush;
+            this.startSession.Location = new System.Drawing.Point(540, 61);
+            this.startSession.Name = "startSession";
+            this.startSession.Size = new System.Drawing.Size(75, 23);
+            this.startSession.TabIndex = 4;
+            this.startSession.Text = "Start";
+            this.startSession.UseVisualStyleBackColor = false;
+            this.startSession.Click += new System.EventHandler(this.startSession_Click);
             // 
-            // button2
+            // sendMessage
             // 
-            this.button2.BackColor = System.Drawing.Color.LavenderBlush;
-            this.button2.Location = new System.Drawing.Point(540, 321);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 5;
-            this.button2.Text = "Send";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.sendMessage.BackColor = System.Drawing.Color.LavenderBlush;
+            this.sendMessage.Location = new System.Drawing.Point(540, 321);
+            this.sendMessage.Name = "sendMessage";
+            this.sendMessage.Size = new System.Drawing.Size(75, 23);
+            this.sendMessage.TabIndex = 5;
+            this.sendMessage.Text = "Send";
+            this.sendMessage.UseVisualStyleBackColor = false;
+            this.sendMessage.Click += new System.EventHandler(this.sendMessage_Click);
             // 
             // ChatMainForm
             // 
@@ -181,8 +181,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.GhostWhite;
             this.ClientSize = new System.Drawing.Size(684, 374);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.sendMessage);
+            this.Controls.Add(this.startSession);
             this.Controls.Add(this.listMessage);
             this.Controls.Add(this.textMessage);
             this.Controls.Add(this.groupBox2);
@@ -212,8 +212,8 @@
         private System.Windows.Forms.TextBox textFriendsIp;
         private System.Windows.Forms.TextBox textMessage;
         private System.Windows.Forms.ListBox listMessage;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button startSession;
+        private System.Windows.Forms.Button sendMessage;
     }
 }
 

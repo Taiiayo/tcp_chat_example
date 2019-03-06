@@ -1,29 +1,22 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
 using System.Net;
 using System.Net.Sockets;
+using System.Text;
+using System.Windows.Forms;
 
 namespace Chat_App
 {
     public partial class ChatMainForm : Form
     {
-        private Socket sckt;
-        private EndPoint epLocal, epRemote;
+        private Socket socket;
+        private EndPoint localEndPoint, remoteEndPoint;
 
         public ChatMainForm()
         {
             InitializeComponent();
 
-            sckt = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
-            sckt.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
+            socket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
+            socket.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
 
             textLocalIp.Text = GetLocalIp();
             textFriendsIp.Text = GetLocalIp();
@@ -32,8 +25,7 @@ namespace Chat_App
 
         private string GetLocalIp()
         {
-            IPHostEntry host;
-            host = Dns.GetHostEntry(Dns.GetHostName());
+            IPHostEntry host = Dns.GetHostEntry(Dns.GetHostName());
 
             foreach (IPAddress ip in host.AddressList)
             {
@@ -46,48 +38,46 @@ namespace Chat_App
             return "127.0.0.1";
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void startSession_Click(object sender, EventArgs e)
         {
             try
             {
-                epLocal = new IPEndPoint(IPAddress.Parse(textLocalIp.Text), Convert.ToInt32(textLocalPort.Text));
-                sckt.Bind(epLocal);
+                localEndPoint = new IPEndPoint(IPAddress.Parse(textLocalIp.Text), Convert.ToInt32(textLocalPort.Text));
+                socket.Bind(localEndPoint);
 
-                epRemote = new IPEndPoint(IPAddress.Parse(textFriendsIp.Text), Convert.ToInt32(textFriendsPort.Text));
-                sckt.Connect(epRemote);
+                remoteEndPoint = new IPEndPoint(IPAddress.Parse(textFriendsIp.Text), Convert.ToInt32(textFriendsPort.Text));
+                socket.Connect(remoteEndPoint);
 
                 byte[] buffer = new byte[1500];
-                sckt.BeginReceiveFrom(buffer, 0, buffer.Length, SocketFlags.None, ref epRemote,
-                    new AsyncCallback(MessageCallBack), buffer);
+                socket.BeginReceiveFrom(buffer, 0, buffer.Length, SocketFlags.None, ref remoteEndPoint,
+                    MessageCallBack, buffer);
 
-                button1.Text = "Connected";
-                button1.Enabled = false;
-                button2.Enabled = true;
+                startSession.Text = "Connected";
+                startSession.Enabled = false;
+                sendMessage.Enabled = true;
                 textMessage.Focus();
             }
             catch (Exception ex)
             {
-
                 MessageBox.Show(ex.ToString());
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void sendMessage_Click(object sender, EventArgs e)
         {
             try
             {
-                System.Text.ASCIIEncoding enc = new System.Text.ASCIIEncoding();
+                ASCIIEncoding asciiEncoding = new ASCIIEncoding();
                 byte[] msg = new byte[1500];
-                msg = enc.GetBytes(textMessage.Text);
+                msg = asciiEncoding.GetBytes(textMessage.Text);
 
-                sckt.Send(msg);
+                socket.Send(msg);
 
                 listMessage.Items.Add("You: " + textMessage.Text);
                 textMessage.Clear();
             }
             catch (Exception ex)
             {
-
                 MessageBox.Show(ex.ToString());
             }
         }
@@ -96,7 +86,7 @@ namespace Chat_App
         {
             try
             {
-                int size = sckt.EndReceiveFrom(aResult, ref epRemote);
+                int size = socket.EndReceiveFrom(aResult, ref remoteEndPoint);
 
                 if (size > 0)
                 {
@@ -111,8 +101,8 @@ namespace Chat_App
                 }
 
                 byte[] buffer = new byte[1500];
-                sckt.BeginReceiveFrom(buffer, 0, buffer.Length, SocketFlags.None, ref epRemote,
-                    new AsyncCallback(MessageCallBack), buffer);
+                socket.BeginReceiveFrom(buffer, 0, buffer.Length, SocketFlags.None, ref remoteEndPoint,
+                    MessageCallBack, buffer);
 
             }
             catch (Exception exp)
